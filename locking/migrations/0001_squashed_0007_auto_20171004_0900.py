@@ -5,7 +5,7 @@ from __future__ import unicode_literals
 import datetime
 from django.db import migrations, models
 import uuid
-
+import pytz
 
 class Migration(migrations.Migration):
 
@@ -21,8 +21,8 @@ class Migration(migrations.Migration):
                 ('locked_object', models.CharField(max_length=150, unique=True, verbose_name='locked object')),
                 ('created_on', models.DateTimeField(db_index=True, verbose_name='created on')),
                 ('max_age', models.PositiveIntegerField(default=0, help_text='The age of a lock before it can be overwritten. 0 means indefinitely.', verbose_name='Maximum lock age')),
-                ('expires_on', models.DateTimeField(db_index=True, default=datetime.datetime(2015, 9, 7, 3, 32, 8, 543000), verbose_name='expires on')),
-                ('renewed_on', models.DateTimeField(db_index=True, default=datetime.datetime(2015, 9, 7, 3, 32, 18, 56000), verbose_name='renewed on')),
+                ('expires_on', models.DateTimeField(db_index=True, default=datetime.datetime(2015, 9, 7, 3, 32, 8, 543000, tzinfo=pytz.utc), verbose_name='expires on')),
+                ('renewed_on', models.DateTimeField(db_index=True, default=datetime.datetime(2015, 9, 7, 3, 32, 18, 56000, tzinfo=pytz.utc), verbose_name='renewed on')),
                 ('id', models.UUIDField(default=uuid.uuid4, editable=False, primary_key=True, serialize=False)),
             ],
             options={

@@ -1,3 +1,5 @@
+PCM-version of django-db-locking. Cloned from django-db-locking 2.0.7 on 2018-08-24.
+
 Django-locking
 ==============
 

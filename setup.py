@@ -1,10 +1,12 @@
 from setuptools import setup, find_packages
 from pip._internal.req.req_file import parse_requirements
-from pip._internal.download import PipSession
+# from pip._internal.download import PipSession see https://github.com/blackducksoftware/synopsys-detect/pull/107
 import locking
 
 from os import path
 
+
+class PipSession: {}
 
 # Lists of requirements and dependency links which are needed during runtime, testing and setup
 install_requires = []

@@ -15,17 +15,21 @@ dependency_links = []
 
 # Inject requirements from requirements.txt into setup.py
 requirements_file = parse_requirements(path.join('requirements', 'requirements.txt'), session=PipSession())
-for req in requirements_file:
-    install_requires.append(str(req.req))
-    if req.link:
-        dependency_links.append(str(req.link))
+try:
+    install_requires = [str(rf.req) for rf in requirements_file]
+except:
+    install_requires = [str(rf.requirement) for rf in requirements_file]
+
+dependency_links = [str(rf.link) for rf in requirements_file if rf.link]
 
 # Inject test requirements from requirements_test.txt into setup.py
 requirements_test_file = parse_requirements(path.join('requirements', 'requirements_test.txt'), session=PipSession())
-for req in requirements_test_file:
-    tests_require.append(str(req.req))
-    if req.link:
-        dependency_links.append(str(req.link))
+try:
+    tests_require = [str(rf.req) for rf in requirements_test_file]
+except:
+    tests_require = [str(rf.requirement) for rf in requirements_test_file]
+
+dependency_links += [str(rf.link) for rf in requirements_file if rf.link]
 
 
 setup(
@@ -50,6 +54,7 @@ setup(
         'Programming Language :: Python :: 2.7',
         'Programming Language :: Python :: 3',
         'Programming Language :: Python :: 3.6',
+        'Programming Language :: Python :: 3.8',
         'Operating System :: OS Independent',
         'Environment :: Web Environment',
         'Framework :: Django',

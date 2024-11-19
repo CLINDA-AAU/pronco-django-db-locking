@@ -55,7 +55,7 @@ setup(
         'Programming Language :: Python :: 3',
         'Programming Language :: Python :: 3.6',
         'Programming Language :: Python :: 3.8',
-        'Programming Language :: Python :: 3.13',
+        'Programming Language :: Python :: 3.13.0',
         'Operating System :: OS Independent',
         'Environment :: Web Environment',
         'Framework :: Django',
